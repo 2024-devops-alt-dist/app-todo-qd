@@ -18,3 +18,7 @@ jobs:
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/app .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/app
+          
+      - name: Trigger Render Deployment
+        run: |
+          curl -X POST https://api.render.com/deploy/srv-cum85a2n91rc739s602g?key=wyA8qGurfn4
